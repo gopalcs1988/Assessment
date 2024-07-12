@@ -22,7 +22,7 @@ WORKDIR /usr/src/app
 COPY . .
 
 # Build the project
-RUN mvn clean install
+RUN mvn clean
 
 # Run the tests
 CMD ["mvn", "test"]
