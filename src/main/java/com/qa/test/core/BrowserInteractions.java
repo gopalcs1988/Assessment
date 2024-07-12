@@ -1,6 +1,7 @@
 package com.qa.test.core;
 
 import java.time.Duration;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
@@ -114,6 +115,11 @@ public class BrowserInteractions extends TestBase {
 	
 	public static void wait(int seconds) {
 		driver.manage().timeouts().implicitlyWait(seconds, TimeUnit.SECONDS);
+	}
+	
+	public static int getCount(LocatorType type, String selector) throws Exception {
+		List<WebElement> elements = element.findElements(By.xpath(selector));
+        return elements.size();
 	}
 
 }

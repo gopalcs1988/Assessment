@@ -41,7 +41,7 @@ public class HomePage {
 		BrowserInteractions.click(LocatorType.XPATH, roundTrip);
 		BrowserInteractions.clearAndType(LocatorType.XPATH, depature, depatureLocation);
 		BrowserInteractions.clearAndType(LocatorType.XPATH, destination, destinationLocation);
-		BrowserInteractions.wait(1);
+		BrowserInteractions.wait(2);
 		BrowserInteractions.keyPressEnter(LocatorType.XPATH, destination);
 		BrowserInteractions.wait(1);
 		BrowserInteractions.isVisible(LocatorType.XPATH, chooseDate);

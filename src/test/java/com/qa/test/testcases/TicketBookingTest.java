@@ -11,6 +11,7 @@ import com.qa.test.base.TestBase;
 import com.qa.test.core.BrowserInteractions;
 import com.qa.test.pages.HomePage;
 import com.qa.test.pages.SearchPage;
+import com.qa.test.pages.SeatSelection;
 
 import org.testng.Assert;
 
@@ -18,6 +19,7 @@ public class TicketBookingTest extends TestBase {
 
 	HomePage homePage = new HomePage();
 	SearchPage searchPage = new SearchPage();
+	SeatSelection chooseSeat = new SeatSelection();
 
 	@Parameters({ "browser","hub_host" })
 	@BeforeClass
@@ -29,11 +31,13 @@ public class TicketBookingTest extends TestBase {
 	public void test() throws Exception {
 		BrowserInteractions.navigateToURL("https://www.ryanair.com/");
 		Assert.assertEquals("2", homePage.searchFlights(), "Adult count is not as expected.");
-		searchPage.chooseFlight();
+		Assert.assertEquals("Our seat sections", searchPage.chooseFlight(), "Seat sections page is not landed");
+		Assert.assertEquals("Cabin Baggage Allowance", chooseSeat.selectSeat());
+		
 	}
-	@AfterClass
-	public void tearDown() {
-		driver.quit();
-	}
+//	@AfterClass
+//	public void tearDown() {
+//		driver.quit();
+//	}
 
 }
