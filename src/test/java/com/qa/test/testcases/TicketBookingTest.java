@@ -8,23 +8,33 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import com.qa.test.base.TestBase;
+import com.qa.test.core.BrowserInteractions;
+import com.qa.test.pages.HomePage;
+import com.qa.test.pages.SearchPage;
 
-public class TicketBookingTest extends TestBase{
-	
-	@Parameters({ "browser", "hub_host" })
+import org.testng.Assert;
+
+public class TicketBookingTest extends TestBase {
+
+	HomePage homePage = new HomePage();
+	SearchPage searchPage = new SearchPage();
+
+	@Parameters({ "browser","hub_host" })
 	@BeforeClass
-	public void setup(String browser, String host) throws MalformedURLException {
-		Initialization(browser, host);
+	public void setup(String browser, String hub_host) throws MalformedURLException {
+		Initialization(browser, hub_host);
 	}
-	
+
 	@Test
-	public void test() {
-		System.out.println("Testing");
+	public void test() throws Exception {
+		BrowserInteractions.navigateToURL("https://www.ryanair.com/");
+		homePage.searchFlights();
+		searchPage.chooseFlight();
+
 	}
-	@AfterClass
-	public void tearDown() {
-		driver.quit();
-	}
-	
+//	@AfterClass
+//	public void tearDown() {
+//		driver.quit();
+//	}
 
 }
