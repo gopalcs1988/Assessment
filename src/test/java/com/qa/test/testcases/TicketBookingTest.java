@@ -28,7 +28,7 @@ public class TicketBookingTest extends TestBase {
 	@Test
 	public void test() throws Exception {
 		BrowserInteractions.navigateToURL("https://www.ryanair.com/");
-		Assert.assertEquals(2, homePage.searchFlights(), "Adult count is not as expected.");
+		Assert.assertEquals("2", homePage.searchFlights(), "Adult count is not as expected.");
 		searchPage.chooseFlight();
 	}
 	@AfterClass
