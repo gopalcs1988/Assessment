@@ -2,18 +2,13 @@ package com.qa.test.pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 
-import com.qa.test.base.TestBase;
 import com.qa.test.core.BrowserInteractions;
 import com.qa.test.utils.LocatorType;
 
-import org.testng.Assert;
-
 public class HomePage {
-	
+
 	WebElement privacyMessage = null;
 	static final String depature = "//input[@id='input-button__departure']";
 	static final String depatureLocation = "Dublin";
@@ -32,15 +27,14 @@ public class HomePage {
 	static final String adultIncrement = "//div[contains(@class,'passengers-picker') and text()='Adults']/../following-sibling::div//div[contains(@class,'counter__button-wrapper--enabled')]";
 	static final String adultCount = "//div[contains(@class,'passengers-picker') and text()='Adults']/../following-sibling::div//div[contains(@class,'counter__value')]";
 	static final String searchButton = "//span[text()='Search']";
-	
-	public void searchFlights() throws Exception {
-		
+
+	public String searchFlights() throws Exception {
+
 		try {
 			BrowserInteractions.waitForElementPresence(By.xpath(privacyMessagePopup));
 			BrowserInteractions.click(LocatorType.XPATH, acceptPrivacyMessage);
-		} 
-		catch (NoSuchElementException e) {
-		    System.out.println("Privacy message not found" + e.getMessage());
+		} catch (NoSuchElementException e) {
+			System.out.println("Privacy message not found" + e.getMessage());
 		}
 		BrowserInteractions.click(LocatorType.XPATH, fligtsOption);
 		BrowserInteractions.isElementPresent(LocatorType.XPATH, roundTrip);
@@ -58,7 +52,7 @@ public class HomePage {
 		BrowserInteractions.wait(1);
 		BrowserInteractions.click(LocatorType.XPATH, adultIncrement);
 		String adultValue = BrowserInteractions.getText(LocatorType.XPATH, adultCount);
-		Assert.assertEquals(adultValue, "2");
 		BrowserInteractions.click(LocatorType.XPATH, searchButton);
+		return adultValue;
 	}
 }
