@@ -16,24 +16,13 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v2
 
-    - name: Set up Docker Buildx
-      uses: docker/setup-buildx-action@v1
-
-    - name: Cache Docker layers
-      uses: actions/cache@v2
-      with:
-        path: /tmp/.buildx-cache
-        key: ${{ runner.os }}-buildx-${{ github.sha }}
-        restore-keys: |
-          ${{ runner.os }}-buildx-
-
     - name: Build Docker image
       run: docker build . -t selenium-tests
 
     - name: Run Selenium Standalone Chrome
       run: |
         docker run -d -p 4444:4444 --name selenium-chrome selenium/standalone-chrome:latest
-        sleep 10 # wait for selenium to start
+        sleep 10
 
     - name: Run Tests
       run: |
