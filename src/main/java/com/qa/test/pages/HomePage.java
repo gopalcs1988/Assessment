@@ -43,6 +43,7 @@ public class HomePage {
 		BrowserInteractions.clearAndType(LocatorType.XPATH, destination, destinationLocation);
 		BrowserInteractions.wait(1);
 		BrowserInteractions.keyPressEnter(LocatorType.XPATH, destination);
+		BrowserInteractions.wait(1);
 		BrowserInteractions.isVisible(LocatorType.XPATH, chooseDate);
 		BrowserInteractions.click(LocatorType.XPATH, novMonth);
 		BrowserInteractions.isVisible(LocatorType.XPATH, novCalendar);
