@@ -26,8 +26,11 @@ cd <repository_folder>
 
 ## View live script execution as a video:
 Navigate to http://localhost:4444/
+
 Click on the "Sessions" section to view the current execution.
-Password for session execution on the grid: secret
+
+Password for session execution on the grid: **secret**
+
 After test script execution:
 
 If "exited with code 1" is shown in the console, press Control + C to stop the Docker.
