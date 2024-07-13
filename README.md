@@ -14,15 +14,14 @@ Docker installed
 ## Configuration and Execution
 Clone the repository to your local machine:
 
-SSH: git@github.com:gopalcs1988/Assessment.git
 HTTPS: https://github.com/gopalcs1988/Assessment.git
 Navigate to the cloned directory:
 
 cd <repository_folder>
 
 ## Run the Docker Compose file to start the test environment:
-For Mac M1: docker compose up
-Note: Currently, there is no support for Windows machines.
+### For Mac M1: 
+> docker compose up
 
 ## View live script execution as a video:
 Navigate to http://localhost:4444/
@@ -33,6 +32,7 @@ After test script execution:
 If "exited with code 1" is shown in the console, press Control + C to stop the Docker.
 
 ## Project Structure
+```
 Assessment
 │
 ├── src
@@ -71,3 +71,4 @@ Assessment
 ├── pom.xml
 ├── README.md
 └── TestNG.xml
+```
