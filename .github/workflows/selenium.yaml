@@ -32,6 +32,7 @@ jobs:
 
     - name: Set up Docker Compose
       run: |
+        docker-compose pull
         docker-compose up -d
         sleep 10
         
