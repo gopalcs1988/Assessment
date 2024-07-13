@@ -26,6 +26,6 @@ services:
     environment:
       - HUB_HOST=selenium-hub
       - BROWSER=chrome
-    #network_mode: host
+    network_mode: host
     volumes:
        - ./reports:/usr/src/app/target/surefire-reports

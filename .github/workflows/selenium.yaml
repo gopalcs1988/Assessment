@@ -30,14 +30,12 @@ jobs:
         docker build -t ${{ secrets.DOCKER_USERNAME }}/selenium-assessment:latest .
         docker push ${{ secrets.DOCKER_USERNAME }}/selenium-assessment:latest
 
-    - name: Set up Docker Compose
+    - name: Set up Docker Compose & Run test
       run: |
         docker-compose pull
         docker-compose up -d
         sleep 10
-        
-    - name: Run Tests
-      run: docker-compose run assessment
+        docker-compose run assessment
 
     - name: Tear Down
       run: docker-compose down  
