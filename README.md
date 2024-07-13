@@ -35,6 +35,14 @@ After test script execution:
 
 If "exited with code 1" is shown in the console, press Control + C to stop the Docker.
 
+## Execute the scripts from github actions workflow
+Navigate to 'https://github.com/gopalcs1988/Assessment/actions'
+
+Click on the 'Run Assessment Tests' on left side under the Actions 
+
+Click 'Run workflow' drop down and choose the branch as 'main' and click 'Run workflow' button to trigger the job
+
+
 ## Project Structure
 ```
 Assessment
