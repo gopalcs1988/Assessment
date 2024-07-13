@@ -6,15 +6,16 @@ Page Object Model (POM): Implemented the POM design pattern for test code mainta
 Selenium Grid with Docker: Test execution on Selenium Grid using Docker for platform independence.
 
 ## Prerequisites
-Java JDK 7 and above
-Apache Maven
-Any preferred IDE
-Docker installed
+- Java JDK 7 and above
+- Apache Maven
+- Any preferred IDE
+- Docker installed
 
 ## Configuration and Execution
 Clone the repository to your local machine:
 
 HTTPS: https://github.com/gopalcs1988/Assessment.git
+
 Navigate to the cloned directory:
 
 cd <repository_folder>
