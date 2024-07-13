@@ -1,15 +1,17 @@
-Assessment
+# Assessment
 This repository automates test scripts using Selenium WebDriver, TestNG framework, Maven, Docker, and Selenium Grid for execution.
 
-Implementation
+## Implementation
 Page Object Model (POM): Implemented the POM design pattern for test code maintainability.
 Selenium Grid with Docker: Test execution on Selenium Grid using Docker for platform independence.
-Prerequisites
+
+## Prerequisites
 Java JDK 7 and above
 Apache Maven
 Any preferred IDE
 Docker installed
-Configuration and Execution
+
+## Configuration and Execution
 Clone the repository to your local machine:
 
 SSH: git@github.com:gopalcs1988/Assessment.git
@@ -17,12 +19,12 @@ HTTPS: https://github.com/gopalcs1988/Assessment.git
 Navigate to the cloned directory:
 
 cd <repository_folder>
-Run the Docker Compose file to start the test environment:
 
+## Run the Docker Compose file to start the test environment:
 For Mac M1: docker compose up
 Note: Currently, there is no support for Windows machines.
-View live script execution as a video:
 
+## View live script execution as a video:
 Navigate to http://localhost:4444/
 Click on the "Sessions" section to view the current execution.
 Password for session execution on the grid: secret
@@ -30,7 +32,7 @@ After test script execution:
 
 If "exited with code 1" is shown in the console, press Control + C to stop the Docker.
 
-Project Structure
+## Project Structure
 Assessment
 │
 ├── src
