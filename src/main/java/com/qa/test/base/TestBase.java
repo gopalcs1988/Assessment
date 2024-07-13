@@ -15,7 +15,7 @@ public class TestBase {
 	public static void Initialization(String browser, String hubHost) throws MalformedURLException {
 		DesiredCapabilities capabilities = new DesiredCapabilities();
 		if (browser.equalsIgnoreCase("Chrome")) {
-			System.setProperty("webdriver.chrome.driver", "//Users//Chromedriver1//chromedriver");
+			//System.setProperty("webdriver.chrome.driver", "//Users//Chromedriver1//chromedriver");
 			ChromeOptions options = new ChromeOptions();
             options.addArguments("--disable-web-security");
             options.addArguments("--allow-running-insecure-content");
@@ -26,11 +26,9 @@ public class TestBase {
 			System.out.println("Input browser is not configured");
 			System.exit(5);
 		}
-		//String hubURL = "http://localhost:4444/wd/hub";
-		String hubURL = "http://" + hubHost + ":4444/wd/hub";
-        driver = new RemoteWebDriver(new URL(hubURL), capabilities);
+		String hubURL = "http://"+hubHost+":4444/wd/hub";
+		driver = new RemoteWebDriver(new URL(hubURL), capabilities);
         driver.manage().window().maximize();
         driver.manage().deleteAllCookies();
-        driver.get("https://example.com");
 	}
 }

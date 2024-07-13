@@ -14,6 +14,7 @@ public class HomePage {
 	static final String depatureLocation = "Dublin";
 	static final String destination = "//input[@id='input-button__destination']";
 	static final String destinationLocation = "Barcelona";
+	static final String chooseDestination = "//span[normalize-space(text())='Barcelona (All Airports)']";
 	static final String fligtsOption = "//div[@class='tab-text ng-star-inserted' and text()='flights']";
 	static final String roundTrip = "//span[text()='Return trip']";
 	static final String privacyMessagePopup = "//p[contains(text(),'We value your privacy')]";
@@ -42,8 +43,8 @@ public class HomePage {
 		BrowserInteractions.clearAndType(LocatorType.XPATH, depature, depatureLocation);
 		BrowserInteractions.clearAndType(LocatorType.XPATH, destination, destinationLocation);
 		BrowserInteractions.wait(2);
-		BrowserInteractions.keyPressEnter(LocatorType.XPATH, destination);
-		BrowserInteractions.wait(1);
+		BrowserInteractions.click(LocatorType.XPATH, chooseDestination);
+		BrowserInteractions.wait(2);
 		BrowserInteractions.isVisible(LocatorType.XPATH, chooseDate);
 		BrowserInteractions.click(LocatorType.XPATH, novMonth);
 		BrowserInteractions.isVisible(LocatorType.XPATH, novCalendar);

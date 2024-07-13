@@ -6,6 +6,7 @@ import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -54,7 +55,7 @@ public class BrowserInteractions extends TestBase {
 			element = waitForElementPresence(by);
 
 		} catch (Exception e) {
-			throw new Exception("Element not visible in the page" + "with locator: " + locator + " Type used:"
+			throw new Exception("Element not visible in the page" + " with locator: " + locator + " Type used:"
 					+ locatorType.name());
 
 		}
@@ -118,8 +119,21 @@ public class BrowserInteractions extends TestBase {
 	}
 	
 	public static int getCount(LocatorType type, String selector) throws Exception {
-		List<WebElement> elements = element.findElements(By.xpath(selector));
-        return elements.size();
+		int attempts = 0;
+	    int maxAttempts = 3;
+	    while (attempts < maxAttempts) {
+	        try {
+	            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+	            List<WebElement> seats = wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.xpath(selector)));
+	            return seats.size();
+	        } catch (StaleElementReferenceException e) {
+	            attempts++;
+	            if (attempts == maxAttempts) {
+	                throw e;
+	            }
+	        }
+	    }
+	    return 0;
 	}
 
 }

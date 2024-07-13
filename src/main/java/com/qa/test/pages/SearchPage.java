@@ -42,7 +42,9 @@ public class SearchPage {
 		BrowserInteractions.click(LocatorType.XPATH, clickMrPassenger2);
 		BrowserInteractions.clearAndType(LocatorType.XPATH, firstNamePassenger2, "Rajagopal");
 		BrowserInteractions.clearAndType(LocatorType.XPATH, lastNamePassenger2, "Arumugam");
+		BrowserInteractions.wait(5);
 		BrowserInteractions.click(LocatorType.XPATH, continueButton);
+		BrowserInteractions.wait(5);
 		return BrowserInteractions.getText(LocatorType.XPATH, seatSection);
 	}
 

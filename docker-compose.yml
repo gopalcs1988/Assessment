@@ -1,0 +1,31 @@
+version: '3.8'
+
+services:
+  selenium-hub:
+    image: seleniarm/hub:latest
+    ports:
+      - 4444:4444
+
+  chrome:
+    #image: seleniarm/standalone-chromium:latest
+    image: seleniarm/node-chromium:latest
+    shm_size: 2g
+    #volumes:
+    #  - /dev/shm:/dev/shm
+    environment:
+      - SE_EVENT_BUS_HOST=selenium-hub
+      - SE_EVENT_BUS_PUBLISH_PORT=4442
+      - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
+    depends_on:
+      - selenium-hub
+
+  assessment:
+    image: gopalcs1988/selenium-assessment
+    depends_on:
+      - chrome
+    environment:
+      - HUB_HOST=selenium-hub
+      - BROWSER=chrome
+    network_mode: host
+    volumes:
+       - ./reports:/usr/src/app/target/surefire-reports

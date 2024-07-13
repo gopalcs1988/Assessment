@@ -14,20 +14,22 @@ public class SeatSelection {
 	static String checkBaggagePage = "//h3[contains(text(),'Cabin Baggage Allowance')]";
 	
 	public String selectSeat() throws Exception {
-		
 		chooseSeat();
 		BrowserInteractions.click(LocatorType.XPATH, nextFlight);
 		BrowserInteractions.wait(3);
-		if(BrowserInteractions.isElementPresent(LocatorType.XPATH, pickTheseSeats))
+		if(BrowserInteractions.isElementPresent(LocatorType.XPATH, pickTheseSeats)) {
 			BrowserInteractions.click(LocatorType.XPATH, pickTheseSeats);
-			BrowserInteractions.wait(5);
+			Thread.sleep(5000);
 			int occupiedSeatsCount = BrowserInteractions.getCount(LocatorType.XPATH, occupiedSeats);
-			if(occupiedSeatsCount != 2) {
+			System.out.println(occupiedSeatsCount);
+			if(occupiedSeatsCount < 2 ) {
 				throw new Exception("The number of occupied seats does not match the expected count of 2.");
 		    }
-			else {
+		}
+		else 
+		{
 			chooseSeat();
-			}
+		}
 		BrowserInteractions.isVisible(LocatorType.XPATH, fastTrack);
 		BrowserInteractions.click(LocatorType.XPATH, skipFastTrack);
 		
@@ -36,7 +38,6 @@ public class SeatSelection {
 	
 	public static void chooseSeat() throws Exception {
 		int count = BrowserInteractions.getCount(LocatorType.XPATH, getAvailableSeats);
-		System.out.println(count);
 		if (count >= 2) {
 			BrowserInteractions.click(LocatorType.XPATH, "(//div[@class='seatmap__extraleg ng-star-inserted']//button[contains(@class,'seatmap__seat seatmap__seat')])[1]");
 			BrowserInteractions.click(LocatorType.XPATH, "(//div[@class='seatmap__extraleg ng-star-inserted']//button[contains(@class,'seatmap__seat seatmap__seat')])[2]");

@@ -35,9 +35,9 @@ public class TicketBookingTest extends TestBase {
 		Assert.assertEquals("Cabin Baggage Allowance", chooseSeat.selectSeat());
 		
 	}
-//	@AfterClass
-//	public void tearDown() {
-//		driver.quit();
-//	}
+	@AfterClass
+	public void tearDown() {
+		driver.quit();
+	}
 
 }

@@ -1,27 +1,22 @@
+# Use Maven 3.6.3 with JDK 11 as the base image
 FROM maven:3.6.3-jdk-11
 
-ENV CHROMEDRIVER_VERSION=126.0.6478.126
-
-# install chrome
-RUN apt-get update && apt-get install -y wget && apt-get install -y zip
-RUN wget -q https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-RUN apt-get install -y ./google-chrome-stable_current_amd64.deb
-
-# install chromedriver
-RUN wget https://storage.googleapis.com/chrome-for-testing-public/$CHROMEDRIVER_VERSION/linux64/chromedriver-linux64.zip \
-  && unzip chromedriver-linux64.zip && rm -dfr chromedriver_linux64.zip \
-  && mv /chromedriver-linux64/chromedriver /usr/bin/chromedriver \
-  && chmod +x /usr/bin/chromedriver
-
-ENV PATH /usr/bin/chromedriver:$PATH
-
-RUN chmod 755 /usr/bin/chromedriver
-
-# Copy the project into the container
+# Set the working directory inside the container
 WORKDIR /usr/src/app
+
+# Copy the project's POM file to the working directory
+COPY pom.xml .
+
+# Resolve project dependencies. This step downloads all dependencies specified in the POM file.
+RUN mvn dependency:go-offline
+
+# Copy the entire project source code to the working directory
 COPY . .
 
-# Build the project
+# Set permissions to make all files executable within the working directory
+RUN chmod -R 777 /usr/src/app
+
+# Clean the Maven project
 RUN mvn clean
 
 # Run the tests

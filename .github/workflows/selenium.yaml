@@ -16,14 +16,25 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v2
 
-    - name: Build Docker image
-      run: docker build . -t selenium-tests
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v1
+      
+    - name: Log in to Docker Hub
+      uses: docker/login-action@v1
+      with:
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
 
-    - name: Run Selenium Standalone Chrome
+    - name: Build and push Docker image
       run: |
-        docker run -d -p 4444:4444 --name selenium-chrome selenium/standalone-chrome:latest
+        docker build -t ${{ secrets.DOCKER_USERNAME }}/selenium-assessment:latest .
+        docker push ${{ secrets.DOCKER_USERNAME }}/selenium-assessment:latest
+
+    - name: Set up Docker Compose
+      run: |
+        docker-compose up -d
         sleep 10
 
-    - name: Run Tests
-      run: |
-        docker run --network="host" -e HUB_HOST="localhost" selenium-tests
+    - name: Tear Down
+      run: docker-compose down  
+    
