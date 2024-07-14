@@ -35,6 +35,9 @@ After test script execution:
 
 If "exited with code 1" is shown in the console, press Control + C to stop the Docker.
 
+## Extend Report along with snapshots
+Once the script executes successfully, the HTML report will be available at <project_directory>/reports/report.html. If any failures occur during execution, the report will contain the error log and corresponding snapshots to help debug the failure.
+
 ## Execute the scripts from github actions workflow
 Navigate to 'https://github.com/gopalcs1988/Assessment/actions'
 
@@ -84,3 +87,17 @@ Assessment
 ├── README.md
 └── TestNG.xml
 ```
+## Framework Setup
+
+### TestNG and Maven
+- The `TestNG.xml` file is located in the project root directory. Currently, the script is executed only on the Chrome browser; support for other browsers is currently out of scope for the business logic.
+- The `pom.xml` file is located in the project root directory. Maven is used to build, deploy, and run the tests.
+
+### Docker
+- The `Dockerfile` contains the configuration to set up the Docker image to run the test scripts along with Maven commands. The `docker-compose.yaml` file contains the services for Selenium Hub, Chrome, and the test script image.
+
+### Test Inputs
+- The test scripts are currently implemented using static values, and no JSON or property files are maintained to handle dynamic values.
+
+
+
