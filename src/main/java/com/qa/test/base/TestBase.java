@@ -38,12 +38,7 @@ public class TestBase {
 		driver.manage().window().maximize();
 		driver.manage().deleteAllCookies();
 	}
-
-	@BeforeSuite(alwaysRun = true)
-	public void BeforeSuite() throws IOException {
-		TestCleanUp.clearTempFolder();
-	}
-
+	
 	public static void closeBrowser() {
 		driver.quit();
 	}
