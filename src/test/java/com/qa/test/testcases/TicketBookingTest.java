@@ -21,23 +21,18 @@ public class TicketBookingTest extends TestBase {
 	SearchPage searchPage = new SearchPage();
 	SeatSelection chooseSeat = new SeatSelection();
 
-	@Parameters({ "browser","hub_host" })
+	@Parameters({ "browser", "hub_host" })
 	@BeforeClass
 	public void setup(String browser, String hub_host) throws MalformedURLException {
 		Initialization(browser, hub_host);
 	}
 
 	@Test
-	public void test() throws Exception {
+	public void FlightTicketBooking() throws Exception {
 		BrowserInteractions.navigateToURL("https://www.ryanair.com/");
 		Assert.assertEquals("2", homePage.searchFlights(), "Adult count is not as expected.");
 		Assert.assertEquals("Our seat sections", searchPage.chooseFlight(), "Seat sections page is not landed");
-		Assert.assertEquals("Cabin Baggage Allowance", chooseSeat.selectSeat());
-		
-	}
-	@AfterClass
-	public void tearDown() {
-		driver.quit();
-	}
+		Assert.assertEquals("Cabin Baggage llowance", chooseSeat.selectSeat());
 
+	}
 }

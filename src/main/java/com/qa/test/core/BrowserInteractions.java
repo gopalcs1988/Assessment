@@ -1,13 +1,17 @@
 package com.qa.test.core;
 
+import java.io.File;
+import java.io.IOException;
 import java.time.Duration;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.OutputType;
 import org.openqa.selenium.StaleElementReferenceException;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.io.FileHandler;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -87,6 +91,7 @@ public class BrowserInteractions extends TestBase {
 		element = getElement(type, selector);
 		element.isDisplayed();
 	}
+
 	public static void isEnabled(LocatorType type, String selector) throws Exception {
 		element = getElement(type, selector);
 		element.isEnabled();
@@ -97,7 +102,7 @@ public class BrowserInteractions extends TestBase {
 		String text = element.getText();
 		return text;
 	}
-	
+
 	public static boolean isElementPresent(LocatorType type, String selector) throws Exception {
 		try {
 			element = getElement(type, selector);
@@ -108,32 +113,48 @@ public class BrowserInteractions extends TestBase {
 			return false;
 		}
 	}
-	
+
 	public static void keyPressEnter(LocatorType type, String selector) throws Exception {
 		element = getElement(type, selector);
 		element.sendKeys(Keys.ENTER);
 	}
-	
+
 	public static void wait(int seconds) {
 		driver.manage().timeouts().implicitlyWait(seconds, TimeUnit.SECONDS);
 	}
-	
+
 	public static int getCount(LocatorType type, String selector) throws Exception {
 		int attempts = 0;
-	    int maxAttempts = 3;
-	    while (attempts < maxAttempts) {
-	        try {
-	            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-	            List<WebElement> seats = wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.xpath(selector)));
-	            return seats.size();
-	        } catch (StaleElementReferenceException e) {
-	            attempts++;
-	            if (attempts == maxAttempts) {
-	                throw e;
-	            }
-	        }
-	    }
-	    return 0;
+		int maxAttempts = 3;
+		while (attempts < maxAttempts) {
+			try {
+				WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+				List<WebElement> seats = wait
+						.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.xpath(selector)));
+				return seats.size();
+			} catch (StaleElementReferenceException e) {
+				attempts++;
+				if (attempts == maxAttempts) {
+					throw e;
+				}
+			}
+		}
+		return 0;
+	}
+
+	public static String capture(String methodName) throws IOException {
+		File srcFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+		String relativePath = "target" + File.separator + "surefire-reports";
+
+		File directory = new File(relativePath);
+
+		File destFile = new File(directory, methodName + System.currentTimeMillis() + ".png");
+
+		String errFilePath = destFile.getName();
+
+		FileHandler.copy(srcFile, destFile);
+		return errFilePath;
+
 	}
 
 }

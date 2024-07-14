@@ -2,6 +2,9 @@
 <suite name="Suite">
 	<parameter name="browser" value="chrome" />
 	<parameter name="hub_host" value="selenium-hub"/>
+	<listeners>
+		<listener class-name="com.qa.test.utils.ExtentReporterNG" />
+	</listeners>
 	<test name="Test">
 		<classes>
 			<class name="com.qa.test.testcases.TicketBookingTest" />

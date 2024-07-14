@@ -21,7 +21,6 @@ public class SeatSelection {
 			BrowserInteractions.click(LocatorType.XPATH, pickTheseSeats);
 			Thread.sleep(5000);
 			int occupiedSeatsCount = BrowserInteractions.getCount(LocatorType.XPATH, occupiedSeats);
-			System.out.println(occupiedSeatsCount);
 			if(occupiedSeatsCount < 2 ) {
 				throw new Exception("The number of occupied seats does not match the expected count of 2.");
 		    }
