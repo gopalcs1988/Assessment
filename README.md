@@ -48,7 +48,7 @@ Click on the 'Run Assessment Tests' on left side under the Actions
 
 Click 'Run workflow' drop down and choose the branch as 'main' and click 'Run workflow' button to trigger the job
 
-
+Once the script execution is completed the articfacts will be generated with test results
 ## Project Structure
 ```
 Assessment
