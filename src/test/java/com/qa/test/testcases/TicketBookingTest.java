@@ -32,6 +32,6 @@ public class TicketBookingTest extends TestBase {
 		BrowserInteractions.navigateToURL("https://www.ryanair.com/");
 		Assert.assertEquals("2", homePage.searchFlights(), "Adult count is not as expected.");
 		Assert.assertEquals("Our seat sections", searchPage.chooseFlight(), "Seat sections page is not landed");
-		Assert.assertEquals("Cabin Baggage Allowance", chooseSeat.selectSeat());
+		Assert.assertEquals("Cabin Bags", chooseSeat.selectSeat());
 	}
 }
