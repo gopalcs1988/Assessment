@@ -19,6 +19,7 @@ services:
 
   assessment:
     image: gopalcs1988/selenium-assessment
+    mem_limit: 1g
     depends_on:
       - chrome
     environment:
