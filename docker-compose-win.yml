@@ -7,8 +7,7 @@ services:
       - 4444:4444
 
   chrome:
-    #image: seleniarm/standalone-chromium:latest
-    image: seleniarm/node-chromium:latest
+    image: selenium/node-chrome:4.8.2
     shm_size: 2g
     environment:
       - SE_EVENT_BUS_HOST=selenium-hub
@@ -24,6 +23,5 @@ services:
     environment:
       - HUB_HOST=selenium-hub
       - BROWSER=chrome
-    #network_mode: host
     volumes:
        - ./reports:/usr/src/app/target/surefire-reports
