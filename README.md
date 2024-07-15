@@ -52,39 +52,46 @@ Once the script execution is completed the articfacts will be generated with tes
 ## Project Structure
 ```
 Assessment
-│
 ├── src
 │   ├── main
-│   │   ├── java
-│   │   │   └── com
-│   │   │       └── qa
-│   │   │           ├── test
-│   │   │           │   ├── base
-│   │   │           │   │   └── TestBase.java
-│   │   │           │   ├── core
-│   │   │           │   │   └── BrowserInteractions.java
-│   │   │           │   ├── pages
-│   │   │           │   │   ├── HomePage.java
-│   │   │           │   │   ├── SearchPage.java
-│   │   │           │   │   └── SeatSelection.java
-│   │   │           │   └── utils
-│   │   │           │       └── LocatorType.java
-│   │   └── resources
-│   │
-│   ├── test
-│       ├── java
-│       │   └── com
-│       │       └── qa
-│       │           └── test
-│       │               └── testcases
-│       │                   └── TicketBookingTest.java
-│       └── resources
+│   │   └── java
+│   │       └── com.qa.test.base
+│   │           └── TestBase.java
+│   │       └── com.qa.test.core
+│   │           ├── BrowserInteractions.java
+│   │           ├── HomePage.java
+│   │           ├── SeatSelection.java
+│   │           └── SearchPage.java
+│   │       └── com.qa.test.utils
+│   │           ├── ExtentReporterNG.java
+│   │           ├── LocatorType.java
+│   │           └── TestCleanUp.java
+│   └── resources
+│
+├── test
+│   └── java
+│       └── com.qa.test.testcases
+│           └── TicketBookingTest.java
+│   └── resources
+│
+├── JRE System Library [JavaSE-1.6]
+├── Maven Dependencies
 │
 ├── .github
 │   └── workflows
-│       └── selenium.yml
+│       └── selenium.yaml
+│
+├── .settings
 ├── reports
+├── src
+├── target
+├── test-output
+│
+├── .classpath
+├── .gitignore
+├── .project
 ├── docker-compose.yml
+├── docker-compose-win.yml
 ├── Dockerfile
 ├── pom.xml
 ├── README.md
