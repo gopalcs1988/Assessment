@@ -24,6 +24,9 @@ cd <repository_folder>
 ### For Mac M1: 
 > docker compose up
 
+### To run on other machines
+> docker compose -f docker-compose-win.yml up
+
 ## View live script execution as a video:
 Navigate to http://localhost:4444/
 
