@@ -11,7 +11,7 @@ public class SeatSelection {
 	static String pickTheseSeats = "//button[contains(text(),' Pick these seats ')]";
 	static String fastTrack = "//h2[contains(text(),' Skip long security queues with Fast Track ')]";
 	static String skipFastTrack = "//button[contains(text(),'No, thanks')]";
-	static String checkBaggagePage = "//h3[contains(text(),'Cabin Baggage Allowance')]";
+	static String checkBaggagePage = "//*[contains(text(),'Cabin Bags')]";
 	
 	public String selectSeat() throws Exception {
 		chooseSeat();
